@@ -80,7 +80,10 @@ export function BurgerModal({
               </div>
               <BurgerBuilder product={product} play={play} />
               <button
-                onClick={() => setPlay(false /* reset */) || setTimeout(() => setPlay(true), 80)}
+                onClick={() => {
+                  setPlay(false);
+                  setTimeout(() => setPlay(true), 80);
+                }}
                 className="mt-12 inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur hover:text-foreground"
               >
                 <Flame className="h-3 w-3 text-accent" /> Repetir armado
