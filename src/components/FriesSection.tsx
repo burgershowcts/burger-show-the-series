@@ -10,13 +10,13 @@ export function FriesSection() {
     <section id="papas" className="relative py-24 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <Header
-          eyebrow="Spin-off oficial"
+          eyebrow="▌ POWER-UPS OFICIALES ▐"
           title={
             <>
-              <span className="text-gradient-fire">PAPAS</span> & MÁS
+              <span className="text-gradient-fire">PAPAS</span> & DRINKS
             </>
           }
-          subtitle="Una saga aparte. Crocantes, cargadas, cinematográficas."
+          subtitle="Power-ups crocantes y soundtrack helado. Sumá vidas extra a tu partida."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

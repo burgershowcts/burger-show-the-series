@@ -103,10 +103,14 @@ export function Header({
   subtitle?: string;
 }) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-primary">{eyebrow}</p>
-      <h2 className="text-display mt-3 text-5xl text-foreground sm:text-6xl md:text-7xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-base text-muted-foreground md:text-lg">{subtitle}</p>}
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="text-pixel text-xs font-semibold uppercase tracking-[0.35em] text-[var(--neon-pink)] text-glow-pink">
+        {eyebrow}
+      </p>
+      <h2 className="text-display mt-4 text-3xl text-foreground text-glow-purple sm:text-4xl md:text-5xl">
+        {title}
+      </h2>
+      {subtitle && <p className="mt-5 text-base text-muted-foreground md:text-lg">{subtitle}</p>}
     </div>
   );
 }
