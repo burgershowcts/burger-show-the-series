@@ -36,18 +36,16 @@ export function AboutSection() {
 
             <ul className="mt-8 grid gap-3 text-sm sm:grid-cols-2">
               {[
-                { k: "+50K", v: "Mordidas legendarias", glow: "purple" },
-                { k: "6", v: "Hamburguesas protagonistas", glow: "pink" },
-                { k: "100%", v: "Carne fresca, hecha al momento", glow: "blue" },
-                { k: "20→02", v: "Horario open arcade", glow: "cheddar" },
+                { k: "+50K", v: "Mordidas legendarias", color: "text-[var(--neon-purple)] text-glow-purple", border: "hover:border-[var(--neon-purple)]" },
+                { k: "6", v: "Hamburguesas protagonistas", color: "text-[var(--neon-pink)] text-glow-pink", border: "hover:border-[var(--neon-pink)]" },
+                { k: "100%", v: "Carne fresca al momento", color: "text-[var(--neon-blue)] text-glow-blue", border: "hover:border-[var(--neon-blue)]" },
+                { k: "20→02", v: "Horario open arcade", color: "text-[var(--cheddar)] text-glow-cheddar", border: "hover:border-[var(--cheddar)]" },
               ].map((it) => (
                 <li
                   key={it.v}
-                  className={`group flex items-center gap-4 rounded-xl border-2 border-border bg-card/60 px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-[var(--neon-${it.glow})] hover:shadow-[0_0_30px_oklch(0.7_0.25_320/0.4)]`}
+                  className={`group flex items-center gap-4 rounded-xl border-2 border-border bg-card/60 px-4 py-3 transition-all hover:-translate-y-0.5 ${it.border}`}
                 >
-                  <span className={`text-display text-2xl text-[var(--neon-${it.glow})] text-glow-${it.glow}`}>
-                    {it.k}
-                  </span>
+                  <span className={`text-display text-2xl ${it.color}`}>{it.k}</span>
                   <span className="text-foreground/85">{it.v}</span>
                 </li>
               ))}
