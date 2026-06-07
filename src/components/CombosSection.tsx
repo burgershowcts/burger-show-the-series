@@ -10,13 +10,13 @@ export function CombosSection() {
     <section id="combos" className="relative py-24 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <Header
-          eyebrow="Top 4 · Episodios Destacados"
+          eyebrow="▌ TOP 4 · MISSION SELECT ▐"
           title={
             <>
-              <span className="text-gradient-fire">COMBOS</span> ÉPICOS
+              <span className="text-gradient-fire">MISIONES</span> ÉPICAS
             </>
           }
-          subtitle="Pensados para compartir. O no."
+          subtitle="Aceptá una misión, llevate la recompensa. Combos pensados para co-op."
         />
 
         <div className="relative mt-12 grid gap-5 md:grid-cols-2">
