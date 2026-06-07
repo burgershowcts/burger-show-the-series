@@ -1,13 +1,13 @@
-import { ShoppingBag, Flame } from "lucide-react";
+import { ShoppingBag, Gamepad2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
 
 const links = [
-  { href: "#menu", label: "Menú" },
-  { href: "#combos", label: "Combos" },
-  { href: "#papas", label: "Papas" },
-  { href: "#promo", label: "Promo" },
-  { href: "#about", label: "Historia" },
+  { href: "#menu", label: "Niveles" },
+  { href: "#combos", label: "Misiones" },
+  { href: "#papas", label: "Power-Ups" },
+  { href: "#promo", label: "Bonus" },
+  { href: "#about", label: "Lore" },
   { href: "#contacto", label: "Contacto" },
 ];
 

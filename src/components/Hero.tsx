@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Clock, Flame, Play } from "lucide-react";
+import { MapPin, Clock, Zap, Gamepad2 } from "lucide-react";
 import { site } from "@/config/site";
 import heroBurger from "@/assets/hero-burger.jpg";
 
@@ -11,46 +11,47 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.85, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-none absolute inset-x-0 top-12 md:top-0 mx-auto h-[60vh] w-[120vw] max-w-none"
+        className="pointer-events-none absolute inset-x-0 top-12 md:top-0 mx-auto h-[58vh] w-[120vw] max-w-none"
         style={{ maxWidth: 1400 }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.7_0.22_40/0.35),transparent_60%)] blur-2xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.72_0.29_0/0.45),transparent_60%)] blur-2xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(0.65_0.27_305/0.35),transparent_60%)] blur-2xl" />
         <img
           src={heroBurger}
           alt="Burger Show — hero"
           width={1536}
           height={1536}
-          className="relative mx-auto h-full w-auto object-contain opacity-90 drop-shadow-[0_30px_80px_oklch(0.7_0.22_40/0.55)]"
+          className="animate-float relative mx-auto h-full w-auto object-contain opacity-95 drop-shadow-[0_30px_80px_oklch(0.72_0.29_0/0.7)]"
         />
       </motion.div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 pt-[28vh] text-center md:pt-[34vh]">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 pt-[26vh] text-center md:pt-[30vh]">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-primary backdrop-blur"
+          className="mb-5 inline-flex items-center gap-2 rounded-md border-2 border-[var(--neon-pink)]/60 bg-[var(--neon-pink)]/10 px-3 py-1.5 text-pixel text-xs uppercase tracking-[0.35em] text-[var(--neon-pink)] text-glow-pink backdrop-blur"
         >
-          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-          Original Series · S01
+          <span className="inline-block h-1.5 w-1.5 animate-blink rounded-full bg-[var(--neon-pink)]" />
+          ▸ PRESS START · SEASON 01
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="text-display text-[14vw] leading-[0.88] text-foreground sm:text-[10vw] md:text-[8.5vw] lg:text-[7.5rem]"
+          className="text-display text-[12vw] leading-[1] text-foreground text-glow-purple sm:text-[8vw] md:text-[6.5vw] lg:text-[5.5rem]"
         >
-          BURGER <span className="text-gradient-fire text-glow-cheddar">SHOW</span>
+          BURGER <span className="text-gradient-fire text-glow-pink">SHOW</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.7 }}
-          className="text-display mt-1 text-base tracking-[0.4em] text-muted-foreground md:text-lg"
+          className="text-pixel mt-2 text-lg tracking-[0.4em] text-[var(--neon-blue)] text-glow-blue md:text-2xl"
         >
-          THE · SERIES
+          ▌ THE · ARCADE · GAME ▐
         </motion.p>
 
         <motion.p
@@ -59,29 +60,27 @@ export function Hero() {
           transition={{ delay: 0.95, duration: 0.7 }}
           className="mt-7 max-w-xl text-base text-muted-foreground md:text-lg"
         >
-          {site.subtagline} El show más sabroso de Corrientes.
+          Cada hamburguesa es un <span className="text-[var(--neon-pink)] font-bold">nivel</span>.
+          Cada combo una <span className="text-[var(--neon-purple)] font-bold">misión</span>. Cada cliente,
+          una nueva <span className="text-[var(--neon-blue)] font-bold">partida</span> en el show más sabroso de Corrientes.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          className="mt-9 flex flex-wrap items-center justify-center gap-4"
         >
-          <a
-            href="#menu"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:scale-[1.03] hover:shadow-[0_0_50px_oklch(0.84_0.18_88/0.6)]"
-          >
-            <Play className="h-4 w-4 fill-current" />
-            Ver Menú
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+          <a href="#menu" className="btn-arcade">
+            <Gamepad2 className="h-4 w-4" />
+            INSERT COIN · JUGAR
           </a>
           <a
             href="#promo"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-foreground backdrop-blur transition-all hover:border-primary/60 hover:bg-card/70"
+            className="inline-flex items-center gap-2 rounded-lg border-2 border-[var(--neon-blue)]/60 bg-background/40 px-6 py-3 text-pixel text-xs font-bold uppercase tracking-[0.18em] text-[var(--neon-blue)] text-glow-blue backdrop-blur transition-all hover:bg-[var(--neon-blue)]/15 hover:shadow-[0_0_28px_oklch(0.72_0.22_240/0.5)]"
           >
-            <Flame className="h-4 w-4 text-accent" />
-            Promociones
+            <Zap className="h-4 w-4 animate-flicker" />
+            MISIÓN BONUS
           </a>
         </motion.div>
 
@@ -89,33 +88,34 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.7 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-muted-foreground md:text-sm"
+          className="text-pixel mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.2em] text-muted-foreground"
         >
           <span className="inline-flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-primary" /> {site.city}
+            <MapPin className="h-4 w-4 text-[var(--neon-pink)]" /> {site.city}
           </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border md:inline-block" />
+          <span className="hidden h-1 w-1 rounded-full bg-[var(--neon-purple)] md:inline-block" />
           <span className="inline-flex items-center gap-2">
-            <Clock className="h-4 w-4 text-primary" /> {site.hours}
+            <Clock className="h-4 w-4 text-[var(--neon-blue)]" /> {site.hours}
           </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border md:inline-block" />
-          <span className="inline-flex items-center gap-2">
-            🍟 Todas las hamburguesas incluyen papas
+          <span className="hidden h-1 w-1 rounded-full bg-[var(--neon-pink)] md:inline-block" />
+          <span className="inline-flex items-center gap-2 text-[var(--cheddar)]">
+            🪙 PAPAS GRATIS · POWER UP
           </span>
         </motion.div>
       </div>
 
       {/* Marquee */}
-      <div className="absolute inset-x-0 bottom-0 overflow-hidden border-y border-border/40 bg-background/50 py-3 backdrop-blur">
-        <div className="flex animate-[scroll_30s_linear_infinite] gap-8 whitespace-nowrap text-display text-sm tracking-[0.3em] text-muted-foreground">
+      <div className="absolute inset-x-0 bottom-0 overflow-hidden border-y-2 border-[var(--neon-purple)]/40 bg-background/70 py-3 backdrop-blur">
+        <div className="text-pixel flex animate-[scroll_30s_linear_infinite] gap-8 whitespace-nowrap text-sm tracking-[0.3em] text-muted-foreground">
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="flex items-center gap-8">
-              CADA HAMBURGUESA · UN EPISODIO
-              <span className="text-primary">●</span>
-              PAPAS GRATIS · SIEMPRE
-              <span className="text-accent">●</span>
+              <span className="text-[var(--neon-pink)] text-glow-pink">★</span>
+              CADA BURGER · UN NIVEL
+              <span className="text-[var(--neon-purple)] text-glow-purple">●</span>
+              PAPAS GRATIS · POWER UP
+              <span className="text-[var(--neon-blue)] text-glow-blue">▲</span>
               PEDIDOS POR WHATSAPP
-              <span className="text-primary">●</span>
+              <span className="text-[var(--cheddar)] text-glow-cheddar">🪙</span>
             </span>
           ))}
         </div>
