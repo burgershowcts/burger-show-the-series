@@ -40,9 +40,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="text-display text-[12vw] leading-[1] text-foreground text-glow-purple sm:text-[8vw] md:text-[6.5vw] lg:text-[5.5rem]"
+          className="text-display flex flex-col items-center gap-1 text-[9vw] leading-[1] text-foreground text-glow-purple sm:text-[6vw] md:text-[5vw] lg:text-[4.5rem]"
         >
-          BURGER <span className="text-gradient-fire text-glow-pink">SHOW</span>
+          <span>BURGER</span>
+          <span className="text-gradient-fire text-glow-pink">SHOW</span>
         </motion.h1>
 
         <motion.p

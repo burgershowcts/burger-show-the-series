@@ -24,9 +24,9 @@ export function PromoBanner() {
             <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
               <Flame className="h-3 w-3 animate-flicker" /> {promo.subtitle}
             </span>
-            <h2 className="text-display mt-4 text-5xl leading-[0.95] text-foreground md:text-7xl">
+            <h2 className="text-display mt-4 text-3xl leading-[1.05] text-foreground text-glow-purple md:text-5xl">
               {promo.title.split(" ").map((w, i) => (
-                <span key={i} className={i === 1 ? "text-gradient-fire" : ""}>
+                <span key={i} className={i === 1 ? "text-gradient-fire text-glow-pink" : ""}>
                   {w}{" "}
                 </span>
               ))}
@@ -60,11 +60,11 @@ export function PromoBanner() {
 
           <div className="relative flex items-center justify-center">
             <div className="text-display select-none text-center">
-              <span className="block text-[8rem] leading-none text-primary md:text-[11rem] text-glow-cheddar">
+              <span className="block text-[6rem] leading-none text-[var(--neon-pink)] text-glow-pink md:text-[8rem]">
                 2×1
               </span>
-              <span className="mt-2 inline-block rounded-full border border-border bg-background/40 px-3 py-1 text-[10px] tracking-[0.3em] text-muted-foreground backdrop-blur">
-                EXPERIENCE
+              <span className="text-pixel mt-3 inline-block rounded-md border-2 border-[var(--neon-blue)]/50 bg-background/60 px-3 py-1 text-xs tracking-[0.3em] text-[var(--neon-blue)] text-glow-blue backdrop-blur">
+                BONUS LEVEL
               </span>
             </div>
           </div>
