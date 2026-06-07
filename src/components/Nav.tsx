@@ -32,11 +32,11 @@ export function Nav() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <a href="#top" className="group flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-primary/15 ring-1 ring-primary/40">
-            <Flame className="h-4 w-4 text-primary animate-flicker" />
+          <span className="grid h-9 w-9 place-items-center rounded-md border-2 border-[var(--neon-pink)]/60 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)] shadow-[0_0_18px_oklch(0.72_0.29_0/0.55)]">
+            <Gamepad2 className="h-4 w-4 animate-flicker" />
           </span>
-          <span className="text-display text-base md:text-lg font-bold tracking-widest text-foreground">
-            BURGER<span className="text-primary">SHOW</span>
+          <span className="text-display text-sm md:text-base font-bold tracking-widest text-foreground text-glow-purple">
+            BURGER<span className="text-[var(--neon-pink)] text-glow-pink">SHOW</span>
           </span>
         </a>
         <nav className="hidden lg:flex items-center gap-1">
@@ -44,7 +44,7 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground"
+              className="text-pixel rounded-md px-3 py-2 text-xs uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:bg-[var(--neon-purple)]/15 hover:text-[var(--neon-pink)]"
             >
               {l.label}
             </a>
@@ -52,12 +52,12 @@ export function Nav() {
         </nav>
         <button
           onClick={() => setOpen(true)}
-          className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_oklch(0.84_0.18_88/0.45)]"
+          className="text-pixel relative inline-flex items-center gap-2 rounded-md border-2 border-[var(--neon-blue)]/60 bg-[var(--neon-blue)]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--neon-blue)] transition-all hover:bg-[var(--neon-blue)] hover:text-background hover:shadow-[0_0_24px_oklch(0.72_0.22_240/0.6)]"
         >
           <ShoppingBag className="h-4 w-4" />
-          <span className="hidden sm:inline">Carrito</span>
+          <span className="hidden sm:inline">Inventario</span>
           {count > 0 && (
-            <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground">
+            <span className="absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-[var(--neon-pink)] px-1 text-[10px] font-bold text-background shadow-[0_0_12px_oklch(0.72_0.29_0/0.9)]">
               {count}
             </span>
           )}
