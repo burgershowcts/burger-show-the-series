@@ -8,6 +8,15 @@ export function CartDrawer() {
   const { settings } = useSiteSettings();
   const whatsappUrl = items.length ? buildWhatsappUrl(settings.whatsapp, buildMessage()) : undefined;
 
+  // Función añadida para romper el iframe de Lovable y abrir WhatsApp afuera
+  const handleWhatsAppRedirect = () => {
+    if (!whatsappUrl) return;
+    if (window.top) {
+      window.top.location.href = whatsappUrl;
+    } else {
+      window.location.href = whatsappUrl;
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -135,14 +144,11 @@ export function CartDrawer() {
                   {formatARS(total)}
                 </span>
               </div>
-              <a
-                href={items.length ? whatsappUrl : undefined}
-                target="_blank"
-                rel="noreferrer"
-                aria-disabled={items.length === 0}
-                onClick={(e) => {
-                  if (items.length === 0) e.preventDefault();
-                }}
+              
+              {/* Cambiado de <a> a <button> con redirección controlada */}
+              <button
+                disabled={items.length === 0}
+                onClick={handleWhatsAppRedirect}
                 className={`flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-bold uppercase tracking-wider transition ${
                   items.length === 0
                     ? "cursor-not-allowed bg-secondary text-muted-foreground"
@@ -151,7 +157,8 @@ export function CartDrawer() {
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 Pedir por WhatsApp
-              </a>
+              </button>
+              
               {items.length > 0 && (
                 <button
                   onClick={clear}
@@ -174,4 +181,4 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.59 5.93L0 24l6.39-1.67a11.83 11.83 0 0 0 5.65 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.17-1.24-6.15-3.37-8.45ZM12.05 21.5h-.01a9.7 9.7 0 0 1-4.94-1.36l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.66 9.66 0 0 1-1.5-5.2c0-5.36 4.36-9.72 9.72-9.72 2.6 0 5.04 1.01 6.88 2.85a9.66 9.66 0 0 1 2.85 6.88c0 5.36-4.36 9.85-9.63 9.85Zm5.55-7.27c-.31-.16-1.8-.89-2.08-.99-.28-.1-.48-.16-.69.15-.2.31-.79.99-.97 1.2-.18.21-.36.23-.67.08-.31-.16-1.3-.48-2.47-1.53-.91-.81-1.52-1.81-1.7-2.12-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.69-1.67-.95-2.29-.25-.6-.5-.52-.69-.53l-.59-.01c-.21 0-.54.08-.83.39-.28.31-1.08 1.06-1.08 2.58 0 1.52 1.11 2.99 1.27 3.2.16.21 2.19 3.34 5.31 4.68.74.32 1.31.51 1.76.66.74.24 1.41.21 1.94.13.59-.09 1.8-.74 2.05-1.45.25-.71.25-1.32.18-1.45-.07-.14-.28-.21-.59-.36Z" />
     </svg>
   );
-}
+} 
