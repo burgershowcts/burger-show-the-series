@@ -1,9 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useCart, formatARS } from "@/lib/cart";
+import { useSiteSettings, buildWhatsappUrl } from "@/lib/useSiteSettings";
 
 export function CartDrawer() {
-  const { items, open, setOpen, setQty, remove, total, whatsappUrl, clear } = useCart();
+  const { items, open, setOpen, setQty, remove, total, buildMessage, clear } = useCart();
+  const { settings } = useSiteSettings();
+  const whatsappUrl = items.length ? buildWhatsappUrl(settings.whatsapp, buildMessage()) : undefined;
+
 
   return (
     <AnimatePresence>

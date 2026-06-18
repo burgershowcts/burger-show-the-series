@@ -1,8 +1,7 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import { site } from "@/config/site";
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 
 export type CartItem = {
-  key: string; // unique cart line id
+  key: string;
   productId: string;
   name: string;
   size?: string;
@@ -21,7 +20,7 @@ type CartCtx = {
   clear: () => void;
   total: number;
   count: number;
-  whatsappUrl: string;
+  buildMessage: () => string;
 };
 
 const Ctx = createContext<CartCtx | null>(null);
@@ -53,8 +52,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const total = useMemo(
     () =>
       items.reduce(
-        (sum, it) =>
-          sum + it.qty * (it.unitPrice + it.extras.reduce((s, e) => s + e.price, 0)),
+        (sum, it) => sum + it.qty * (it.unitPrice + it.extras.reduce((s, e) => s + e.price, 0)),
         0,
       ),
     [items],
@@ -62,28 +60,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const count = items.reduce((s, it) => s + it.qty, 0);
 
-  const whatsappUrl = useMemo(() => {
+  const buildMessage = useCallback(() => {
     const lines = [
       "🍔 *Pedido — BURGER SHOW*",
       "",
       ...items.map((it) => {
         const extras = it.extras.length ? `\n   Extras: ${it.extras.map((e) => e.name).join(", ")}` : "";
         const size = it.size ? ` (${it.size})` : "";
-        const subtotal =
-          it.qty * (it.unitPrice + it.extras.reduce((s, e) => s + e.price, 0));
+        const subtotal = it.qty * (it.unitPrice + it.extras.reduce((s, e) => s + e.price, 0));
         return `• ${it.qty}× ${it.name}${size}${extras}\n   $${subtotal.toLocaleString("es-AR")}`;
       }),
       "",
       `*Total:* $${total.toLocaleString("es-AR")}`,
       "",
-      "Gracias!",
+      "¡Gracias!",
     ];
-    const msg = encodeURIComponent(lines.join("\n"));
-    return `https://wa.me/${site.whatsapp.replace(/\D/g, "")}?text=${msg}`;
+    return lines.join("\n");
   }, [items, total]);
 
   return (
-    <Ctx.Provider value={{ items, open, setOpen, addItem, remove, setQty, clear, total, count, whatsappUrl }}>
+    <Ctx.Provider value={{ items, open, setOpen, addItem, remove, setQty, clear, total, count, buildMessage }}>
       {children}
     </Ctx.Provider>
   );
@@ -97,3 +93,4 @@ export function useCart() {
 
 export const formatARS = (n: number) =>
   `$${n.toLocaleString("es-AR", { maximumFractionDigits: 0 })}`;
+

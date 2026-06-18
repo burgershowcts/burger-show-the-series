@@ -17,8 +17,8 @@ export const site = {
   subtagline: "Cada hamburguesa tiene su propia historia.",
   city: "Corrientes Capital, Argentina",
   hours: "20:00 — 02:00",
-  whatsapp: "+5493790000000", // sin signos, formato internacional
-  whatsappDisplay: "+54 9 379 XXXX-XXXX",
+  whatsapp: "5493794073008", // formato internacional sin signos
+  whatsappDisplay: "+54 9 3794 07-3008",
   instagram: "burgershow",
   tiktok: "burgershow",
   facebook: "Burger Show",

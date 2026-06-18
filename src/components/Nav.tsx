@@ -1,6 +1,8 @@
-import { ShoppingBag, Gamepad2 } from "lucide-react";
+import { ShoppingBag, Gamepad2, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { useCart } from "@/lib/cart";
+
 
 const links = [
   { href: "#menu", label: "Niveles" },
@@ -50,18 +52,29 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <button
-          onClick={() => setOpen(true)}
-          className="text-pixel relative inline-flex items-center gap-2 rounded-md border-2 border-[var(--neon-blue)]/60 bg-[var(--neon-blue)]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--neon-blue)] transition-all hover:bg-[var(--neon-blue)] hover:text-background hover:shadow-[0_0_24px_oklch(0.72_0.22_240/0.6)]"
-        >
-          <ShoppingBag className="h-4 w-4" />
-          <span className="hidden sm:inline">Inventario</span>
-          {count > 0 && (
-            <span className="absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-[var(--neon-pink)] px-1 text-[10px] font-bold text-background shadow-[0_0_12px_oklch(0.72_0.29_0/0.9)]">
-              {count}
-            </span>
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/admin"
+            className="text-pixel hidden md:inline-flex items-center gap-1.5 rounded-md border border-border/60 bg-background/40 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:border-[var(--neon-purple)]/60 hover:text-[var(--neon-purple)]"
+            aria-label="Panel admin"
+          >
+            <Shield className="h-3.5 w-3.5" />
+            Admin
+          </Link>
+          <button
+            onClick={() => setOpen(true)}
+            className="text-pixel relative inline-flex items-center gap-2 rounded-md border-2 border-[var(--neon-blue)]/60 bg-[var(--neon-blue)]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--neon-blue)] transition-all hover:bg-[var(--neon-blue)] hover:text-background hover:shadow-[0_0_24px_oklch(0.72_0.22_240/0.6)]"
+          >
+            <ShoppingBag className="h-4 w-4" />
+            <span className="hidden sm:inline">Inventario</span>
+            {count > 0 && (
+              <span className="absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-[var(--neon-pink)] px-1 text-[10px] font-bold text-background shadow-[0_0_12px_oklch(0.72_0.29_0/0.9)]">
+                {count}
+              </span>
+            )}
+          </button>
+        </div>
+
       </div>
     </header>
   );
